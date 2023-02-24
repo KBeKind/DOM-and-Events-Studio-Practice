@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 currentLeft = nextLeft[2].split(":")
                 let test = currentLeft[1].slice(1);
-                if (parseInt(test) < 400) {
+                if (parseInt(test) < 100) {
 
                 rocket.style.left = (parseInt(test) + 10) + "px"; 
                 }
