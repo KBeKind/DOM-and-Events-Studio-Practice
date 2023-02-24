@@ -84,14 +84,17 @@ document.addEventListener("DOMContentLoaded", function() {
             });
 
             rightButton.addEventListener("click", function() {
+           
                 let currentLeft = rocket.getAttribute("style");
                 
                 let nextLeft = currentLeft.split('p');
 
                 currentLeft = nextLeft[2].split(":")
                 let test = currentLeft[1].slice(1);
+                if (parseInt(test) < 560) {
 
                 rocket.style.left = (parseInt(test) + 10) + "px"; 
+                }
             });
         };
     });
