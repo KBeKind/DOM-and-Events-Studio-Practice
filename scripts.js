@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const spaceShuttleHeight = document.getElementById("spaceShuttleHeight");
 
+    rocket.style.top = "250px";
+    rocket.style.left = "280px";
 
     takeoffButton.addEventListener("click", function () {
         if (confirm("Confirm that the shuttle is ready for takeoff.")) {
@@ -32,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
             shuttleBackground.style.backgroundColor = "blue";
             spaceShuttleHeight.textContent = "10000";
             rocket.style.top = "240px";
+
 
             landingButton.addEventListener("click", function () {
                 alert("The shuttle is landing. Landing gear engaged.");
@@ -54,10 +57,9 @@ document.addEventListener("DOMContentLoaded", function () {
             upButton.addEventListener("click", function () {
 
                 let currentTop = rocket.getAttribute("style");
+                let nextTop = currentTop.split(' ');
+                currentTop = nextTop[1].slice(0,-3);
 
-                let nextTop = currentTop.split('p');
-
-                currentTop = nextTop[1].slice(2);
                 if (currentTop > 30) {
                     rocket.style.top = (parseInt(currentTop) - 10) + "px";
                     spaceShuttleHeight.textContent = parseInt(spaceShuttleHeight.textContent) + 10000;
@@ -69,9 +71,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 let currentTop = rocket.getAttribute("style");
 
-                let nextTop = currentTop.split('p');
-
-                currentTop = nextTop[1].slice(2);
+                let nextTop = currentTop.split(' ');
+                currentTop = nextTop[1].slice(0, -3);
                 if (currentTop < 250) {
                     spaceShuttleHeight.textContent = parseInt(spaceShuttleHeight.textContent) - 10000;
                     rocket.style.top = (parseInt(currentTop) + 10) + "px";
@@ -80,28 +81,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
             leftButton.addEventListener("click", function () {
                 let currentLeft = rocket.getAttribute("style");
-
-                let nextLeft = currentLeft.split('p');
-
-                currentLeft = nextLeft[2].split(":")
-                let test = currentLeft[1].slice(1);
-                if (parseInt(test) > 15) {
-
-                    rocket.style.left = (parseInt(test) - 10) + "px";
+                let nextLeft = currentLeft.split(' ');
+                currentLeft = nextLeft[3].slice(0, -3);
+                if (parseInt(currentLeft) > 15) {
+                    rocket.style.left = (parseInt(currentLeft) - 10) + "px";
                 }
             });
 
             rightButton.addEventListener("click", function () {
-
                 let currentLeft = rocket.getAttribute("style");
-
-                let nextLeft = currentLeft.split('p');
-
-                currentLeft = nextLeft[2].split(":")
-                let test = currentLeft[1].slice(1);
-                if (parseInt(test) < 560) {
-
-                    rocket.style.left = (parseInt(test) + 10) + "px";
+                let nextLeft = currentLeft.split(' ');
+                currentLeft = nextLeft[3].slice(0,-3);
+                if (parseInt(currentLeft) > 15) {
+                    rocket.style.left = (parseInt(currentLeft) + 10) + "px";
                 }
             });
         };
